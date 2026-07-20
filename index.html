@@ -2,7 +2,7 @@
 <html lang="ko" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta id="theme-color" name="theme-color" content="#0b0e13" />
     <meta name="description" content="DailyBit 적립식 디지털 자산 투자 서비스 UI" />
     <title>DailyBit | 비트코인·이더리움 균형 적립</title>
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="theme.css" />
     <link rel="stylesheet" href="polish.css" />
+    <link rel="stylesheet" href="mobile.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -68,7 +69,16 @@
             <div class="breadcrumb" aria-label="현재 위치"><span>적립 투자</span><span aria-hidden="true">›</span><span>상품 상세</span></div>
             <div class="title-row"><h1 id="page-title">비트코인·이더리움 균형 적립</h1><span class="live-chip"><i></i>적립 중</span></div>
           </div>
-          <div class="heading-actions"><button class="ghost-button" type="button">공유</button><button class="ghost-button" type="button">관심 상품</button></div>
+          <div class="heading-actions">
+            <button class="ghost-button" type="button" aria-label="공유">
+              <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 13v6h14v-6" /></svg>
+              <span>공유</span>
+            </button>
+            <button class="ghost-button" type="button" aria-label="관심 상품">
+              <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /></svg>
+              <span>관심 상품</span>
+            </button>
+          </div>
         </section>
         <div class="dashboard-layout">
           <section class="surface-card product-overview grid-product" aria-labelledby="strategy-title">
@@ -140,6 +150,20 @@
           </section>
         </div>
       </main>
+      <nav class="mobile-bottom-nav" aria-label="모바일 주요 메뉴">
+        <a class="active" href="#" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V20h-5v-5H9v5H4Z" /></svg>
+          <span>포트폴리오</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h3M14 12h2M8 16h3M14 16h2" /></svg>
+          <span>세금 계산</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9m7 10V5m7 14v-7M3 19h18" /></svg>
+          <span>리포트</span>
+        </a>
+      </nav>
     </div>
     <script src="theme.js"></script>
   </body>
