@@ -1,0 +1,174 @@
+:root {
+  --theme-toggle-hover: #171d25;
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+.theme-toggle svg {
+  transition: transform 0.18s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(8deg);
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f3f5f8;
+  --header: #ffffff;
+  --surface: #ffffff;
+  --surface-strong: #f8faff;
+  --surface-subtle: #f6f8fb;
+  --border: #d7dee7;
+  --border-soft: #e5eaf0;
+  --text: #151a22;
+  --secondary: #4f5c6b;
+  --muted: #748090;
+  --blue: #1f75ee;
+  --blue-hover: #1769d9;
+  --blue-soft: rgba(31, 117, 238, 0.1);
+  --green: #168b62;
+  --green-soft: rgba(22, 139, 98, 0.1);
+  --red: #d73f54;
+  --orange: #e69a24;
+  --ethereum: #586fdb;
+  --theme-toggle-hover: #eef2f6;
+}
+
+html[data-theme="light"] .app-shell {
+  background: var(--bg);
+}
+
+html[data-theme="light"] .topbar {
+  border-bottom-color: #e3e8ee;
+  box-shadow: 0 1px 8px rgba(21, 26, 34, 0.04);
+}
+
+html[data-theme="light"] .primary-nav a {
+  color: #697687;
+}
+
+html[data-theme="light"] .primary-nav a:hover,
+html[data-theme="light"] .primary-nav a.active {
+  color: var(--text);
+}
+
+html[data-theme="light"] .hot-chip {
+  background: rgba(215, 63, 84, 0.09);
+  color: #c73549;
+}
+
+html[data-theme="light"] .search-box input::placeholder {
+  color: #8b96a4;
+}
+
+html[data-theme="light"] .icon-button {
+  color: #596676;
+}
+
+html[data-theme="light"] .profile-avatar {
+  color: #ffffff;
+}
+
+html[data-theme="light"] .ghost-button:hover,
+html[data-theme="light"] .icon-button:hover,
+html[data-theme="light"] .profile-button:hover {
+  border-color: #c7d0db;
+  background: var(--theme-toggle-hover);
+}
+
+html[data-theme="light"] .surface-card {
+  border-color: var(--border-soft);
+  box-shadow: 0 7px 22px rgba(33, 45, 60, 0.055);
+}
+
+html[data-theme="light"] .order-card {
+  border-color: rgba(31, 117, 238, 0.22);
+}
+
+html[data-theme="light"] .badge {
+  background: #eef2f6;
+  color: #596675;
+}
+
+html[data-theme="light"] .badge-blue {
+  background: var(--blue-soft);
+  color: #176bdc;
+}
+
+html[data-theme="light"] .text-button {
+  color: #176bdc;
+}
+
+html[data-theme="light"] .text-button:hover {
+  color: #1059b9;
+}
+
+html[data-theme="light"] .next-order span {
+  color: var(--text);
+}
+
+html[data-theme="light"] .allocation-bar {
+  background: #e8edf3;
+}
+
+html[data-theme="light"] .simulation-badge {
+  background: #eef2f6;
+  color: #667382;
+}
+
+html[data-theme="light"] .bar-chart {
+  border-bottom-color: #dce3eb;
+}
+
+html[data-theme="light"] .bar-item em,
+html[data-theme="light"] .bar-item small {
+  color: #7c8795;
+}
+
+html[data-theme="light"] .bar-item > span {
+  background: #cdd6e1;
+}
+
+html[data-theme="light"] .bar-item.active em,
+html[data-theme="light"] .bar-item.active small {
+  color: #176bdc;
+}
+
+html[data-theme="light"] .secondary-button {
+  color: #176bdc;
+}
+
+html[data-theme="light"] .exchange-item b {
+  color: #667382;
+}
+
+html[data-theme="light"] .needs-action {
+  background: rgba(230, 154, 36, 0.055);
+}
+
+html[data-theme="light"] .small-action {
+  border-color: rgba(199, 125, 15, 0.4);
+  background: rgba(230, 154, 36, 0.11);
+  color: #a76708;
+}
+
+html[data-theme="light"] .small-action:hover {
+  background: rgba(230, 154, 36, 0.18);
+}
+
+html[data-theme="light"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle .moon-icon {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle svg {
+    transition: none;
+  }
+}
