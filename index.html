@@ -1,15 +1,26 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b0e13" />
-    <meta
-      name="description"
-      content="DailyBit 적립식 디지털 자산 투자 서비스 UI"
-    />
+    <meta id="theme-color" name="theme-color" content="#0b0e13" />
+    <meta name="description" content="DailyBit 적립식 디지털 자산 투자 서비스 UI" />
     <title>DailyBit | 비트코인·이더리움 균형 적립</title>
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("dailybit-theme");
+          const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          const theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : systemTheme;
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -24,295 +35,111 @@
             </span>
             <span>DailyBit</span>
           </a>
-
           <nav class="primary-nav" aria-label="주요 메뉴">
             <a class="active" href="#" aria-current="page">포트폴리오</a>
-            <a class="tax-nav" href="#">
-              세금 계산
-              <span class="hot-chip">HOT</span>
-            </a>
+            <a class="tax-nav" href="#">세금 계산 <span class="hot-chip">HOT</span></a>
             <a href="#">리포트</a>
           </nav>
-
           <div class="topbar-actions">
             <label class="search-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" />
-              </svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" /></svg>
               <input type="search" placeholder="코인·상품 검색" aria-label="코인 및 상품 검색" />
             </label>
-            <button class="icon-button" type="button" aria-label="알림">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
+            <button class="icon-button theme-toggle" type="button" aria-label="화이트 모드로 전환" aria-pressed="false" title="화이트 모드">
+              <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
               </svg>
+              <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 15.5A8.5 8.5 0 0 1 8.5 3.4 8.5 8.5 0 1 0 20.6 15.5Z"></path></svg>
+            </button>
+            <button class="icon-button" type="button" aria-label="알림">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" /></svg>
             </button>
             <button class="profile-button" type="button" aria-label="프로필 메뉴 열기">
-              <span class="profile-avatar">D</span>
-              <span>데일리 투자자</span>
+              <span class="profile-avatar">D</span><span>데일리 투자자</span>
             </button>
           </div>
         </div>
       </header>
-
       <main class="workspace">
         <section class="workspace-heading" aria-labelledby="page-title">
           <div>
-            <div class="breadcrumb" aria-label="현재 위치">
-              <span>적립 투자</span>
-              <span aria-hidden="true">›</span>
-              <span>상품 상세</span>
-            </div>
-            <div class="title-row">
-              <h1 id="page-title">비트코인·이더리움 균형 적립</h1>
-              <span class="live-chip"><i></i>적립 중</span>
-            </div>
+            <div class="breadcrumb" aria-label="현재 위치"><span>적립 투자</span><span aria-hidden="true">›</span><span>상품 상세</span></div>
+            <div class="title-row"><h1 id="page-title">비트코인·이더리움 균형 적립</h1><span class="live-chip"><i></i>적립 중</span></div>
           </div>
-          <div class="heading-actions">
-            <button class="ghost-button" type="button">공유</button>
-            <button class="ghost-button" type="button">관심 상품</button>
-          </div>
+          <div class="heading-actions"><button class="ghost-button" type="button">공유</button><button class="ghost-button" type="button">관심 상품</button></div>
         </section>
-
         <div class="dashboard-layout">
           <section class="surface-card product-overview grid-product" aria-labelledby="strategy-title">
             <div class="product-summary">
-              <div class="eyebrow-row">
-                <span class="badge badge-blue">DailyBit Pick</span>
-                <span class="badge">중위험</span>
-                <span class="updated">2026. 07. 20 · 09:00 기준</span>
-              </div>
-
+              <div class="eyebrow-row"><span class="badge badge-blue">DailyBit Pick</span><span class="badge">중위험</span><span class="updated">2026. 07. 20 · 09:00 기준</span></div>
               <div class="strategy-copy">
                 <h2 id="strategy-title">예측보다 꾸준함에 투자해요</h2>
-                <p>
-                  비트코인과 이더리움을 60:40으로 나눠 매일 자동 매수합니다.
-                  매수 시점을 분산해 가격 변동 부담을 낮추는 장기 적립 전략입니다.
-                </p>
+                <p>비트코인과 이더리움을 60:40으로 나눠 매일 자동 매수합니다. 매수 시점을 분산해 가격 변동 부담을 낮추는 장기 적립 전략입니다.</p>
               </div>
-
               <div class="hero-footer">
                 <dl class="summary-metrics">
-                  <div>
-                    <dt>최근 1년 수익률</dt>
-                    <dd class="up">+18.42%</dd>
-                  </div>
-                  <div>
-                    <dt>최대 하락폭</dt>
-                    <dd>-12.8%</dd>
-                  </div>
-                  <div>
-                    <dt>적립 중인 사용자</dt>
-                    <dd>12,842명</dd>
-                  </div>
+                  <div><dt>최근 1년 수익률</dt><dd class="up">+18.42%</dd></div>
+                  <div><dt>최대 하락폭</dt><dd>-12.8%</dd></div>
+                  <div><dt>적립 중인 사용자</dt><dd>12,842명</dd></div>
                 </dl>
-
-                <div class="hero-action">
-                  <div class="hero-amount">
-                    <span>현재 적립 금액</span>
-                    <strong>매일 10,000원</strong>
-                  </div>
-                  <button class="primary-button" type="button">적립 관리</button>
-                </div>
+                <div class="hero-action"><div class="hero-amount"><span>현재 적립 금액</span><strong>매일 10,000원</strong></div><button class="primary-button" type="button">적립 관리</button></div>
               </div>
             </div>
           </section>
-
           <section class="surface-card order-card grid-order" aria-labelledby="order-title">
-            <div class="card-header compact-header">
-              <div>
-                <span class="section-label">적립 설정</span>
-                <h2 id="order-title">매일 10,000원</h2>
-              </div>
-              <button class="text-button" type="button">관리</button>
-            </div>
-
-            <div class="status-line">
-              <span class="status-dot"></span>
-              <strong>자동 매수 정상 실행 중</strong>
-            </div>
-
+            <div class="card-header compact-header"><div><span class="section-label">적립 설정</span><h2 id="order-title">매일 10,000원</h2></div><button class="text-button" type="button">관리</button></div>
+            <div class="status-line"><span class="status-dot"></span><strong>자동 매수 정상 실행 중</strong></div>
             <dl class="order-options">
-              <div class="order-row">
-                <dt>월 예상 적립</dt>
-                <dd>300,000원</dd>
-              </div>
-              <div class="order-row">
-                <dt>매수 주기</dt>
-                <dd>매일 · 09:00</dd>
-              </div>
-              <div class="order-row">
-                <dt>다음 매수</dt>
-                <dd>2026. 07. 21</dd>
-              </div>
+              <div class="order-row"><dt>월 예상 적립</dt><dd>300,000원</dd></div>
+              <div class="order-row"><dt>매수 주기</dt><dd>매일 · 09:00</dd></div>
+              <div class="order-row"><dt>다음 매수</dt><dd>2026. 07. 21</dd></div>
             </dl>
-
-            <div class="next-order">
-              <div>
-                <span>다음 매수 예정 금액</span>
-                <small>BTC 6,000원 · ETH 4,000원</small>
-              </div>
-              <strong>10,000원</strong>
-            </div>
+            <div class="next-order"><div><span>다음 매수 예정 금액</span><small>BTC 6,000원 · ETH 4,000원</small></div><strong>10,000원</strong></div>
           </section>
-
           <section class="surface-card holdings-card grid-holdings" aria-labelledby="holdings-title">
-            <div class="card-header">
-              <div>
-                <span class="section-label">자산 구성</span>
-                <h2 id="holdings-title">60:40 비중으로 적립</h2>
-              </div>
-              <button class="text-button" type="button">포트폴리오 보기</button>
-            </div>
-
-            <div class="allocation-bar" aria-label="비트코인 60%, 이더리움 40%">
-              <span class="allocation-btc" style="width: 60%"></span>
-              <span class="allocation-eth" style="width: 40%"></span>
-            </div>
-
+            <div class="card-header"><div><span class="section-label">자산 구성</span><h2 id="holdings-title">60:40 비중으로 적립</h2></div><button class="text-button" type="button">포트폴리오 보기</button></div>
+            <div class="allocation-bar" aria-label="비트코인 60%, 이더리움 40%"><span class="allocation-btc" style="width: 60%"></span><span class="allocation-eth" style="width: 40%"></span></div>
             <div class="holdings-list">
               <article class="holding-item">
                 <span class="asset-icon bitcoin" aria-hidden="true">₿</span>
-                <div class="asset-main">
-                  <div>
-                    <strong>비트코인</strong>
-                    <span>BTC</span>
-                  </div>
-                  <small>매일 6,000원</small>
-                </div>
-                <div class="holding-right">
-                  <strong>60%</strong>
-                  <span>3,384,960원</span>
-                </div>
+                <div class="asset-main"><div><strong>비트코인</strong><span>BTC</span></div><small>매일 6,000원</small></div>
+                <div class="holding-right"><strong>60%</strong><span>3,384,960원</span></div>
               </article>
-
               <article class="holding-item">
                 <span class="asset-icon ethereum" aria-hidden="true">◆</span>
-                <div class="asset-main">
-                  <div>
-                    <strong>이더리움</strong>
-                    <span>ETH</span>
-                  </div>
-                  <small>매일 4,000원</small>
-                </div>
-                <div class="holding-right">
-                  <strong>40%</strong>
-                  <span>2,256,640원</span>
-                </div>
+                <div class="asset-main"><div><strong>이더리움</strong><span>ETH</span></div><small>매일 4,000원</small></div>
+                <div class="holding-right"><strong>40%</strong><span>2,256,640원</span></div>
               </article>
             </div>
-
-            <div class="card-footer total-footer">
-              <div>
-                <span>총 평가금액</span>
-                <strong>5,641,600원</strong>
-              </div>
-              <div class="footer-return">
-                <span>누적 수익률</span>
-                <strong class="up">+14.7%</strong>
-              </div>
-            </div>
+            <div class="card-footer total-footer"><div><span>총 평가금액</span><strong>5,641,600원</strong></div><div class="footer-return"><span>누적 수익률</span><strong class="up">+14.7%</strong></div></div>
           </section>
-
           <section class="surface-card simulation-card grid-simulation" aria-labelledby="simulation-title">
-            <div class="card-header">
-              <div>
-                <span class="section-label">예상 결과</span>
-                <h2 id="simulation-title">월 30만 원씩 5년 모으면</h2>
-              </div>
-              <span class="simulation-badge">연 8% 가정</span>
-            </div>
-
+            <div class="card-header"><div><span class="section-label">예상 결과</span><h2 id="simulation-title">월 30만 원씩 5년 모으면</h2></div><span class="simulation-badge">연 8% 가정</span></div>
             <div class="simulation-content">
-              <div class="simulation-number">
-                <span>5년 뒤 예상 자산</span>
-                <strong>22,053,000원</strong>
-                <small>원금 18,000,000원 + 예상 수익 4,053,000원</small>
-              </div>
-
+              <div class="simulation-number"><span>5년 뒤 예상 자산</span><strong>22,053,000원</strong><small>원금 18,000,000원 + 예상 수익 4,053,000원</small></div>
               <div class="bar-chart" role="img" aria-label="1년부터 5년까지 예상 자산 증가 그래프">
-                <div class="bar-item">
-                  <em>377만</em>
-                  <span style="--height: 28%"></span>
-                  <small>1년</small>
-                </div>
-                <div class="bar-item">
-                  <em>785만</em>
-                  <span style="--height: 46%"></span>
-                  <small>2년</small>
-                </div>
-                <div class="bar-item">
-                  <em>1,226만</em>
-                  <span style="--height: 63%"></span>
-                  <small>3년</small>
-                </div>
-                <div class="bar-item">
-                  <em>1,703만</em>
-                  <span style="--height: 80%"></span>
-                  <small>4년</small>
-                </div>
-                <div class="bar-item active">
-                  <em>2,205만</em>
-                  <span style="--height: 100%"></span>
-                  <small>5년</small>
-                </div>
+                <div class="bar-item"><em>377만</em><span style="--height: 28%"></span><small>1년</small></div>
+                <div class="bar-item"><em>785만</em><span style="--height: 46%"></span><small>2년</small></div>
+                <div class="bar-item"><em>1,226만</em><span style="--height: 63%"></span><small>3년</small></div>
+                <div class="bar-item"><em>1,703만</em><span style="--height: 80%"></span><small>4년</small></div>
+                <div class="bar-item active"><em>2,205만</em><span style="--height: 100%"></span><small>5년</small></div>
               </div>
             </div>
-
-            <div class="card-footer simulation-footer">
-              <p>예상 수익은 시장 상황에 따라 달라질 수 있습니다.</p>
-              <button class="secondary-button" type="button">적립 계획 보기</button>
-            </div>
+            <div class="card-footer simulation-footer"><p>예상 수익은 시장 상황에 따라 달라질 수 있습니다.</p><button class="secondary-button" type="button">적립 계획 보기</button></div>
           </section>
-
           <section class="surface-card exchange-card grid-exchange" aria-labelledby="exchange-title">
-            <div class="card-header exchange-heading">
-              <div>
-                <span class="section-label">거래소 연결</span>
-                <h2 id="exchange-title">3개 정상 · 1개 확인 필요</h2>
-              </div>
-              <button class="text-button" type="button">연결 관리</button>
-            </div>
-
+            <div class="card-header exchange-heading"><div><span class="section-label">거래소 연결</span><h2 id="exchange-title">3개 정상 · 1개 확인 필요</h2></div><button class="text-button" type="button">연결 관리</button></div>
             <div class="exchange-list">
-              <article class="exchange-item">
-                <span class="exchange-logo upbit-logo">U</span>
-                <div>
-                  <strong>Upbit</strong>
-                  <span>API 연결 정상</span>
-                </div>
-                <b class="connected">정상</b>
-              </article>
-
-              <article class="exchange-item">
-                <span class="exchange-logo bithumb-logo">B</span>
-                <div>
-                  <strong>Bithumb</strong>
-                  <span>자동 조회 사용 중</span>
-                </div>
-                <b class="connected">정상</b>
-              </article>
-
-              <article class="exchange-item">
-                <span class="exchange-logo coinone-logo">C</span>
-                <div>
-                  <strong>Coinone</strong>
-                  <span>잔고 동기화 완료</span>
-                </div>
-                <b class="connected">정상</b>
-              </article>
-
-              <article class="exchange-item needs-action">
-                <span class="exchange-logo korbit-logo">K</span>
-                <div>
-                  <strong>Korbit</strong>
-                  <span>주문 권한 확인 필요</span>
-                </div>
-                <button class="small-action" type="button">확인</button>
-              </article>
+              <article class="exchange-item"><span class="exchange-logo upbit-logo">U</span><div><strong>Upbit</strong><span>API 연결 정상</span></div><b class="connected">정상</b></article>
+              <article class="exchange-item"><span class="exchange-logo bithumb-logo">B</span><div><strong>Bithumb</strong><span>자동 조회 사용 중</span></div><b class="connected">정상</b></article>
+              <article class="exchange-item"><span class="exchange-logo coinone-logo">C</span><div><strong>Coinone</strong><span>잔고 동기화 완료</span></div><b class="connected">정상</b></article>
+              <article class="exchange-item needs-action"><span class="exchange-logo korbit-logo">K</span><div><strong>Korbit</strong><span>주문 권한 확인 필요</span></div><button class="small-action" type="button">확인</button></article>
             </div>
           </section>
         </div>
       </main>
     </div>
+    <script src="theme.js"></script>
   </body>
 </html>
